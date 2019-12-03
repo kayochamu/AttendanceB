@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @first_day = Date.current.beginning_of_month
+    @last_day = @first_day.end_of_month
   end
 
   def new
@@ -93,3 +95,5 @@ end
     def basic_info_params
       params.require(:user).permit(:department, :basic_time, :work_time)
     end
+    
+   
