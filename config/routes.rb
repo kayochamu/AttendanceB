@@ -1,4 +1,5 @@
 
+
 Rails.application.routes.draw do
   root 'static_pages#top'
   get '/signup', to: 'users#new'
@@ -13,5 +14,6 @@ Rails.application.routes.draw do
       get 'edit_basic_info'
       patch 'update_basic_info'
     end
+    resources :attendances, only: :update # この行を追加します。
   end
 end
