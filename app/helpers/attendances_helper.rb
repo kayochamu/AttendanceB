@@ -15,3 +15,20 @@ module AttendancesHelper
     format("%.2f", (((finish - start) / 60) / 60.0))
   end
 end
+
+
+# 退社時間もしくは出社時間のみの更新ができないようにしたい
+def attendances_invalid?
+      attendances = true
+      attendances_params.each do |id, item|
+    if item[:started_at].blank? || item[:finished_at].blank?
+      # もし、出勤時間が空かOR、退勤時間が空ならfalse
+      attendances = false
+    end
+  end
+  return attendances
+end
+
+
+
+ 
