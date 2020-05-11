@@ -41,11 +41,32 @@
 
     <tbody>
     <% @attendances.each do |day| %>
+
+     <!--リテラルで定義した対象オブジェクトの（土日）色を変えたい！-->
+     <% css_class =
+    # CSS_classに代入
+    case %w{日 月 火 水 木 金 土}[day.worked_on.wday]
+    # dayブロック変数.worked_onカラム（勤怠表の日付）.wday曜日
+    when '土'
+      'text-primary'
+    when '日'
+      'text-danger'
+    end%>
+    <!--case 対象オブジェクト-->
+    <!--when 値1 then-->
+    <!--値1と一致する場合に行う処理-->
+    <!--when 値2 then-->
+    <!--値2と一致する場合に行う処理-->
+    <!--when 値3 then-->
+    <!--値3と一致する場合に行う処理-->
+    <!--else-->
+    <!--どの値にも一致しない場合に行う処理-->
+    <!--end-->
+    <!--※「then」は省略可能です-->
+    <!--https://www.javadrive.jp/ruby/if/index9.html-->
     <tr>
     <td><%= l(day.worked_on, format: :short) %></td>
-    <td><%= $days_of_the_week[day.worked_on.wday] %></td>
-      <td class="<%= if day.worked_on.saturday? %>">
-          <%= %w{日 月 火 水 木 金 土}[day.worked_on.wday] %>
+    <td class="<%= css_class %>"><%= $days_of_the_week[day.worked_on.wday] %></td>
       </td>
     <td>
       <% if btn_text = attendance_state(day) %>

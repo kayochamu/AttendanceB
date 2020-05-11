@@ -18,7 +18,8 @@
   <%= f.fields_for "attendances[]", day do |attendance| %>
     <tr>
       <td><%= l(day.worked_on, format: :short) %></td>
-      
+      <td><%= $days_of_the_week[day.worked_on.wday] %></td>
+      </td>
       <% if (Date.current < day.worked_on) %>
       <!--管理者も、一般ユーザーも本日以降編集不可能-->
         <td><%= attendance.time_field :started_at, readonly: true, class: "form-control" %></td>
