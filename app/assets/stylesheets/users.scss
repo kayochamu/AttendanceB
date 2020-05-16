@@ -216,3 +216,54 @@ p {
   margin: 15px 0;
   width: 30%;
 }
+
+.reserch_form{
+  margin: 15px 0;
+  width: 15%;
+  height: 33px;
+}
+
+
+
+
+
+
+
+
+// 検索フォームテキスト入力
+input[type=search] {
+	padding: 10px;
+	width: 210px;
+// コンテンツ領域の幅
+	height: 27px;
+// 	コンテンツ領域の高さ
+	font-size: 100%;
+	box-sizing: border-box;
+// 	境界領域の幅
+	border-radius: 5px 0 0 5px;
+// 	ボックスの４つのコーナーの角丸をまとめて指定
+	border: 1px solid #ccc;
+// 	要素の境界
+	border-right: none;
+// 	右ボーダーのスタイル・太さ・色　色々ある点線dotted;
+// 非表示にしないと、線が出てボタンと別れてしまう
+
+}
+
+// 検索ボタン
+input[type=submit] {
+	-webkit-appearance: none;
+	display: inline-block;
+	padding: 0 10px;
+	color: #fff;
+	width: 50px;
+	height: 27px;
+	font-size: 100%;
+	vertical-align: top;
+// 	行のなかでのテキストや画像などの縦方向の揃え位置を指定
+	border: none;
+// 	要素の境界非表示
+	border-radius: 0 5px 5px 0;
+	background: #1f76e2;
+
+}

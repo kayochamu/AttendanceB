@@ -5,9 +5,26 @@ class UsersController < ApplicationController
   before_action :admin_user, only: [:destroy, :edit_basic_info, :update_basic_info ,:index]
   before_action :set_one_month, only: :show
 
+# 検索フォームの記述を足したらエラーになる
   def index
     @users = User.paginate(page: params[:page])
+    if params[:search].present?
+      @users = @users.search(params[:search])
+    end    
+  end    
+      
+  # searchアクションないとエラーになる
+  # search.html.erbもないとエラーになる
+  # user.rbに記述している
+  # params[:search]（田）が入ってきたら、ユーザー取得
+  def search
+    @search = User.search(params[:search])
   end
+
+# 要するに、indexとsearchが統合できていない？
+
+
+
 
   def show
     @worked_sum = @attendances.where.not(started_at: nil).count
@@ -57,7 +74,10 @@ class UsersController < ApplicationController
     end
     redirect_to users_url
   end
-
+  
+  
+  
+  
   private
 
     def user_params
@@ -68,3 +88,5 @@ class UsersController < ApplicationController
       params.require(:user).permit(:department, :basic_time, :work_time)
     end
 end
+
+    
